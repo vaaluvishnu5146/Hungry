@@ -1,3 +1,16 @@
+:root {
+  --primary: #0f172b;
+  --secondary: #ee4d2a;
+}
+
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .App {
   text-align: center;
 }
@@ -34,5 +47,97 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.App-container {
+  width: 100%;
+  max-width: 560px;
+  height: 100vh;
+  background: #0f172b;
+  margin: 0px auto;
+}
+
+/* LOGIN PAGE */
+
+.login-page {
+  > .login-header {
+    width: 100%;
+    height: calc(100vh / 2);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  > .login-body {
+    padding: 10px 20px;
+  }
+}
+
+/* HOME PAGE */
+
+.home-page-content {
+  padding: 10px 15px;
+}
+
+/* CARD SLIDER CONTAINER */
+.card-slider-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+
+  > .card-wrapper {
+    min-width: 50%;
+    height: 280px;
+    padding: 10px;
+    box-sizing: border-box;
+
+    > .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      background-position: center;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+
+      > .card-header {
+        height: 50px;
+        padding: 10px 10px;
+        display: flex;
+        align-items: start;
+      }
+      > .card-body {
+        height: calc(100% - 100px);
+        display: flex;
+        align-items: start;
+        justify-content: end;
+        flex-direction: column;
+        padding: 10px 10px;
+      }
+      > .card-footer {
+        height: 50px;
+      }
+    }
+  }
+}
+
+/* APP HEADR */
+
+.app-header {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  > .prefix {
+    width: 80px;
+  }
+  > .content {
+    width: calc(100% - 160px);
+  }
+  > .suffix {
+    width: 80px;
   }
 }
