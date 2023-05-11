@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CardSlider from "../Components/CardSlider/CardSlider";
 import Appbar from "../Components/AppBar/Appbar";
 import IconButton from "../Elements/Cta/IconButton";
@@ -10,6 +10,18 @@ import { ShoppingCart, Menu } from "@mui/icons-material";
 
 export default function Home() {
   const navigator = useNavigate();
+  const [restaurants, setRestaurants] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/restaurants/getAllRestaurants")
+      .then((response) => response.json())
+      .then((response) => {
+        if (response) {
+          setRestaurants(response.result.data);
+        }
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <Box className="home-page">
@@ -24,7 +36,7 @@ export default function Home() {
         }
       />
       <Box className="home-page-content">
-        <CardSlider data={[{}, {}, {}, {}]} />
+        <CardSlider data={restaurants} />
       </Box>
     </Box>
   );
