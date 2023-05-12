@@ -4,17 +4,20 @@ export const RestaurantReducer = createSlice({
   name: "restaurant",
   initialState: {
     data: [],
+    trendingRestaurants: [],
+    servingToday: [],
   },
   reducers: {
     saveRestaurants: (state, action) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
-      console.log(state, action);
-      //   if (action.payload) {
-      //     state.tasks.push(action.payload);
-      //   }
+      if (action.payload) {
+        state.data = action.payload;
+        state.trendingRestaurants = action.payload.filter(
+          (data) => data.generalDetails.trending
+        );
+        state.servingToday = action.payload.filter(
+          (data) => data.generalDetails.isOpen
+        );
+      }
     },
   },
 });
