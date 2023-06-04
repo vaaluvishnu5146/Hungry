@@ -14,7 +14,6 @@ export default function RestaurantDetails() {
   const params = useParams();
   const [food, setFood] = useState();
   const { isAdmin } = useSelector((state) => state.authentication);
-  console.log(params);
   useEffect(() => {
     // GETTING RESTAURANT ID FROM URL PARAMS
     if (params["id"]) {
@@ -40,7 +39,16 @@ export default function RestaurantDetails() {
             Restaurant
           </Typography>
         }
-        suffix={isAdmin && <IconCta onClick={() => {}} Icon={AppIcons.edit} />}
+        suffix={
+          isAdmin && (
+            <IconCta
+              onClick={() =>
+                navigator(`/createProduct/${params["id"]}?mode=create"`)
+              }
+              Icon={AppIcons.edit}
+            />
+          )
+        }
       />
       <Box className="restaurant-body">
         <img

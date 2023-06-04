@@ -9,6 +9,7 @@ import { saveRestaurants } from "../Redux/Reducers/Restaurant.reducer";
 import { useSelector, useDispatch } from "react-redux";
 import AppIcons from "../Configs/Icons";
 import RestaurantListItem from "../Components/Lists/RestaurantListItem";
+import axios from "axios";
 
 export default function Home() {
   const navigator = useNavigate();
@@ -18,11 +19,12 @@ export default function Home() {
   );
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/restaurants/getAllRestaurants")
-      .then((response) => response.json())
+    axios
+      .get("http://localhost:5000/api/restaurants/getAllRestaurants")
       .then((response) => {
-        if (response && response.result && response.result.data.length > 0) {
-          dispatcher(saveRestaurants(response.result.data));
+        const { data } = response.data.result;
+        if (response && data.length > 0) {
+          dispatcher(saveRestaurants(data));
         }
       })
       .catch((error) => console.log(error));

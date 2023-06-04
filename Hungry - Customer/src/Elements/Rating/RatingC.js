@@ -15,7 +15,11 @@ export default function RatingC({
       id={id}
       name={name}
       value={value}
-      onChange={onChange}
+      onChange={(e) => {
+        e.target.id = id;
+        e.target.name = name;
+        onChange(e);
+      }}
       readOnly={readOnly}
       disabled={disabled}
       size={size}

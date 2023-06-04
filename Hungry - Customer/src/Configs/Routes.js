@@ -2,6 +2,7 @@ import Login from "../Pages/login";
 import Home from "../Pages/Home";
 import RestaurantDetails from "../Pages/RestaurantDetails";
 import Cart from "../Pages/Cart";
+import CreateProduct from "../Pages/CreateProduct";
 
 export const openRoutes = [
   {
@@ -30,5 +31,11 @@ export const closedRoutes = [
     id: "cartDetails",
     Component: <Cart />,
     path: "/cart/:id",
+  },
+  {
+    name: "Create Product | For a Restaurant",
+    id: "createProduct",
+    Component: <CreateProduct />,
+    path: "/createProduct/:id",
   },
 ];
